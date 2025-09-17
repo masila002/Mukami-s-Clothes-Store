@@ -444,6 +444,10 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
             margin-left: auto;
             margin-right: auto;
         }
+        .location {
+            margin-bottom: 2rem;
+            color: #9ca3af;
+        }
         
         .social-links {
             display: flex;
@@ -781,8 +785,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Classic Dera</h3>
                         <p class="product-description">Timeless elegance with traditional African patterns</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 500</span>
-                            <button onclick="addToCart({id:1, name:'Classic Dera', price:500, image:'Dera.webp'})" class="btn btn-primary">Add to Cart</button>
+                            <a href="dera.html" class="btn btn-primary">Shop Now</a>  
                         </div>
                     </div>
                 </article>
@@ -795,8 +798,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Colourful Leso</h3>
                         <p class="product-description">Vibrant colors that celebrate African heritage</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 400</span>
-                            <button onclick="addToCart({id:2, name:'Colourful Leso', price:400, image:'leso1.jpg'})" class="btn btn-primary">Add to Cart</button>
+                            <a href="leso.html" class="btn btn-primary">Shop Now</a> 
                         </div>
                     </div>
                 </article>
@@ -809,8 +811,8 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Elegant Vitenge</h3>
                         <p class="product-description">Premium quality fabrics with sophisticated designs</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 2,500</span>
-                            <button onclick="addToCart({id:3, name:'Elegant Vitenge', price:2500, image:'Vitenge PURE COTTON.jpeg'})" class="btn btn-primary">Add to Cart</button>
+                            
+                            <a href="vitenge.html" class="btn btn-primary">Shop Now</a>
                         </div>
                     </div>
                 </article>
@@ -823,8 +825,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Pareo</h3>
                         <p class="product-description">Versatile beach and casual wear</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 500</span>
-                            <button onclick="addToCart({id:4, name:'Pareo', price:500, image:'pareo1.jpg'})" class="btn btn-primary">Add to Cart</button>
+                            <a href="pareo.html" class="btn btn-primary">Shop Now</a> 
                         </div>
                     </div>
                 </article>
@@ -837,8 +838,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Vikoi</h3>
                         <p class="product-description">Traditional coastal wrap with modern appeal</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 550</span>
-                            <button onclick="addToCart({id:5, name:'Vikoi', price:550, image:'kikoi.jpeg'})" class="btn btn-primary">Add to Cart</button>
+                            <a href="vikoi.html" class="btn btn-primary">Shop Now</a> 
                         </div>
                     </div>
                 </article>
@@ -852,8 +852,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                         <h3 class="product-name">Quality Masai Shuka</h3>
                         <p class="product-description">Vibrant colors that celebrate Masai culture</p>
                         <div class="product-footer">
-                            <span class="product-price">KSh 1200</span>
-                            <button onclick="addToCart({id:6, name:'Quality Masai Shuka', price:700, image:'Masai shuka.avif'})" class="btn btn-primary">Add to Cart</button>
+                            <a href="masai.html" class="btn btn-primary">Shop Now</a> 
                         </div>
                     </div>
                 </article>
@@ -913,6 +912,13 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                 <p class="footer-description">
                     Celebrating African heritage through authentic fashion. Your trusted source for traditional and modern African wear.
                 </p>
+                <!-- ...existing code... -->
+                <div class="location">
+                    <p class="footer-location">
+                    <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                    </p>
+                </div>
+
                 
                 <div class="social-links">
                     <a href="https://wa.me/254111674295" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -998,6 +1004,7 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
         function updateCartUI() {
             const cartCount = document.getElementById('cartCount');
             const cartItems = document.getElementById('cartItems');
+            localStorage.setItem('cart', JSON.stringify(cart));
             const cartFooter = document.getElementById('cartFooter');
             const cartTotal = document.getElementById('cartTotal');
             
@@ -1140,12 +1147,16 @@ Here's the complete HTML code for your modern, SEO-optimized Mukami Fashion & De
                 }
             }
         `;
-        document.head.appendChild(style);
         
         // Initialize cart on page load
         document.addEventListener('DOMContentLoaded', function() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            }
             updateCartUI();
         });
+// ...existing code...
     </script>
 
     <!-- Performance and SEO optimizations -->
